@@ -1,0 +1,3 @@
+/Users/willygodx/CLionProjects/Lab 2 - 2/cmake-build-debug/CMakeFiles/Lab_2___2.dir
+/Users/willygodx/CLionProjects/Lab 2 - 2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/willygodx/CLionProjects/Lab 2 - 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
