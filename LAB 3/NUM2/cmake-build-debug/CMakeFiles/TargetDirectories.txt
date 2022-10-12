@@ -1,0 +1,3 @@
+/Users/willygodx/CLionProjects/NUM2/cmake-build-debug/CMakeFiles/NUM2.dir
+/Users/willygodx/CLionProjects/NUM2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/willygodx/CLionProjects/NUM2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
