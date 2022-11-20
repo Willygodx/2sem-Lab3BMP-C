@@ -1,14 +1,11 @@
 #include "arrays.h"
 int main() {
-    srand(time(NULL));
-    int** arr;
-    printf("Enter amount of rows: ");
-    int n = checkInput(n);
-    printf("Enter amount of columns: ");
-    int m = checkInput(m);
-    initArray(&arr, n);
-    fillArray(arr, n, m);
-    outputArray(arr, n, m);
-    free(arr);
+    printf("Input amount of rows for table: ");
+    int size_of_table = checkInput(size_of_table);
+    int **table;
+    int *rows;
+    initArray(size_of_table, &table, &rows);
+    fillArray(size_of_table, table, rows);
+    outputArray(size_of_table, table, rows);
     return 0;
 }
