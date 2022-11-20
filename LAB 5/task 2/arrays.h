@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 int checkInput(int a);
-void initArray(int*** arr, int n);
-void fillArray (int** arr, int n, int m);
-void outputArray(int** arr, int n, int m);
+void initArray(int size_of_table, int*** table, int** rows);
+void fillArray(int size_of_table, int** table, int *rows);
+void outputArray(int size_of_table, int** table, int* rows);
