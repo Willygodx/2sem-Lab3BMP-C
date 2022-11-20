@@ -6,26 +6,34 @@ int checkInput(int a) {
     }
     return a;
 }
-void initArray(int*** arr, int n) {
-    *arr = (int**)calloc(n, sizeof(int*));
+void initArray(int size_of_table, int*** table, int** rows) {
+    *table = (int**)calloc(size_of_table, sizeof(int *));
+    *rows = (int*)calloc(size_of_table, sizeof(int));
 }
-void fillArray (int** arr, int n, int m) {
-    int i = 0;
-    for (i = 0; i < n; i++) {
-        arr[i] = (int*)calloc(m, sizeof(int));
-        int b = rand() % m;
-        for (int j = 0; j < b - 1; j++) {
-            arr[i][j] = j + 1;
-        }
+void fillArray(int size_of_table, int** table, int *rows) {
+    for (int i = 0; i < size_of_table; i++) {
+        int n = 1;
+        printf("Enter a %d row: ", i);
+        rewind(stdin);
+        do {
+
+            if(scanf("%d", &n) == 0){
+                printf("You wrote an incorrect raw. Try again!\n");
+                rewind(stdin);
+                i -=1;
+                break;
+
+            }
+            table[i] = realloc(table[i], sizeof(int) * (rows[i] + 1));
+            table[i][rows[i]] = n;
+            rows[i]++;
+        } while (n != 0);
     }
 }
-void outputArray(int** arr, int n, int m) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            printf("%5d ", arr[i][j]);
-            if (arr[i][j] == 0) {
-                break;
-            }
+void outputArray(int size_of_table, int** table, int* rows) {
+    for(int i = 0; i < size_of_table; i++){
+        for(int j = 0;j < rows[i]; j++){
+            printf("%d ",table[i][j]);
         }
         printf("\n");
     }
