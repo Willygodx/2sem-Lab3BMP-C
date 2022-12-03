@@ -8,7 +8,7 @@ int checkMenuInput(int a) {
     return a;
 }
 int checkInput(int a) {
-    while (scanf("%d", &a) != 1 || getchar() != '\n') {
+    while (scanf("%d", &a) != 1 || getchar() != '\n' || a <= 0) {
         printf("Incorrect input. Try again: ");
         rewind(stdin);
     }
