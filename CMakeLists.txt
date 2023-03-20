@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Ruslan C)
+project(Ruslan)
 
 set(CMAKE_C_STANDARD 90)
 
