@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
-project(sonar_scanner_example)
+project(ruslan)
 
 set(CMAKE_C_STANDARD 90)
 
-add_executable(sonar_scanner_example labStruct/main.c labStruct/functions.c labStruct/functions.h)
+add_executable(ruslan labStruct/main.c labStruct/functions.c labStruct/functions.h)
