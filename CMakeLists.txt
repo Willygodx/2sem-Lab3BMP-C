@@ -3,4 +3,4 @@ project(Ruslan)
 
 set(CMAKE_C_STANDARD 90)
 
-add_executable(Ruslan main.c functions.c functions.h)
+add_executable(Ruslan labStruct\main.c labStruct\functions.c labStruct\functions.h)
