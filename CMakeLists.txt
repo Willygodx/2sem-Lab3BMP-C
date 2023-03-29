@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.23)
 project(ruslan)
 
-set(CMAKE_C_STANDARD 90)
+set(CMAKE_C_STANDARD 99)
 
-add_executable(ruslan labStruct/main.c labStruct/functions.c labStruct/functions.h)
+add_executable(ruslan pratcie/main.c pratcie/arrays.c pratcie/arrays.h)
