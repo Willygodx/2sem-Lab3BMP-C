@@ -1,0 +1,3 @@
+/Users/willygodx/CLionProjects/decompr/cmake-build-debug/CMakeFiles/decompr.dir
+/Users/willygodx/CLionProjects/decompr/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/willygodx/CLionProjects/decompr/cmake-build-debug/CMakeFiles/rebuild_cache.dir
