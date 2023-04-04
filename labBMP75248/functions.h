@@ -35,7 +35,7 @@ typedef struct BITMAPINFOHEADER
 
 typedef struct RGB
 {
-    BYTE Red;
-    BYTE Green;
-    BYTE Blue;
+    BYTE red;
+    BYTE green;
+    BYTE blue;
 } RGB;
