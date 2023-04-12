@@ -50,3 +50,4 @@ void medianFilter(FILE *fileBMP, FILE *editedFile, int filterSize);
 int compare(const int* first, const int* second);
 size_t sortAndMedianSize(size_t *pixelValue, const size_t length);
 void menu(FILE* fileBMP, FILE* editedFile, const char* editedFileName);
+void checkFiles(const FILE* fileBMP, const FILE* editedFile);

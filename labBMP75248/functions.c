@@ -87,15 +87,7 @@ FILE* copyFile(FILE* fileBMP, FILE* editedFile, const char* editedFileName)
 
 void convertToNegative(FILE* fileBMP, FILE* editedFile)
 {
-    if (!fileBMP) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (!editedFile) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
+    checkFiles(fileBMP, editedFile);
     BITMAPINFOHEADER bitmapInfoHeader;
     BITMAPFILEHEADER bitmapFileHeader;
     fseek(fileBMP, 0, SEEK_SET);
@@ -120,15 +112,7 @@ void convertToNegative(FILE* fileBMP, FILE* editedFile)
 
 void convertToBlackAndWhite(FILE* fileBMP, FILE* editedFile)
 {
-    if (!fileBMP) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (!editedFile) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
+    checkFiles(fileBMP, editedFile);
     BITMAPINFOHEADER bitmapInfoHeader;
     BITMAPFILEHEADER bitmapFileHeader;
     fseek(fileBMP, 0, SEEK_SET);
@@ -153,15 +137,7 @@ void convertToBlackAndWhite(FILE* fileBMP, FILE* editedFile)
 
 void gammaCorrection(FILE* fileBMP, FILE* editedFile, float gammaValue)
 {
-    if (!fileBMP) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (!editedFile) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
+    checkFiles(fileBMP, editedFile);
     BITMAPINFOHEADER bitmapInfoHeader;
     BITMAPFILEHEADER bitmapFileHeader;
     fseek(fileBMP, 0, SEEK_SET);
@@ -186,15 +162,7 @@ void gammaCorrection(FILE* fileBMP, FILE* editedFile, float gammaValue)
 
 void medianFilter(FILE* fileBMP, FILE* editedFile, int filterSize)
 {
-    if (!fileBMP) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (!editedFile) {
-        fprintf(stderr, "Error: unable to open this file!\n");
-        exit(EXIT_FAILURE);
-    }
+    checkFiles(fileBMP, editedFile);
     BITMAPINFOHEADER bitmapInfoHeader;
     BITMAPFILEHEADER bitmapFileHeader;
     fseek(fileBMP, 0, SEEK_SET);
@@ -304,5 +272,18 @@ void menu(FILE* fileBMP, FILE* editedFile, const char* editedFileName)
                 printf("Error input! Try again.\n>");
                 break;
         }
+    }
+}
+
+void checkFiles(const FILE* fileBMP, const FILE* editedFile)
+{
+    if (!fileBMP) {
+        fprintf(stderr, "Error: unable to open this file!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (!editedFile) {
+        fprintf(stderr, "Error: unable to open this file!\n");
+        exit(EXIT_FAILURE);
     }
 }
