@@ -41,6 +41,7 @@ void checkValueForMenu(int* value)
     }
 }
 
+
 FILE* openFileWithChecks(const char* fileName, const char* openMode)
 {
     FILE* fileBMP;
