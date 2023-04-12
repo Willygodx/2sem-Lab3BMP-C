@@ -4,3 +4,4 @@ project(ruslan)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(ruslan Lab3BMP/main.c Lab3BMP/functions.c Lab3BMP/functions.h)
+add_executable(ruslan Lab2Compressor/main.c Lab2Compressor/functions.c Lab2Compressor/functions.h)
