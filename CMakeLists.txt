@@ -3,4 +3,4 @@ project(ruslan)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(ruslan labBMP75248/main.c labBMP75248/functions.c labBMP75248/functions.h)
+add_executable(ruslan Lab3BMP/main.c Lab3BMP/functions.c Lab3BMP/functions.h)
