@@ -31,7 +31,6 @@ typedef struct {
     DWORD biClrImportant;
 } __attribute__((packed)) BITMAPINFOHEADER;
 
-
 typedef struct {
     BYTE red;
     BYTE green;
