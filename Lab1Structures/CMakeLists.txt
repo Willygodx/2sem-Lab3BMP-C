@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
-project(labStruct C)
+project(Lab1Structures C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(labStruct main.c functions.c functions.h)
+add_executable(Lab1Structures main.c functions.c functions.h)
