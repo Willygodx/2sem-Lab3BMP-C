@@ -85,14 +85,9 @@ FILE* copyFile(FILE* fileBMP, FILE* editedFile, const char* editedFileName)
     return editedFile;
 }
 
-void convertToNegative(FILE* fileBMP, FILE* editedFile)
+void convertToNegative(FILE* fileBMP, FILE* editedFile, BITMAPINFOHEADER bitmapInfoHeader, BITMAPFILEHEADER bitmapFileHeader)
 {
     checkFiles(fileBMP, editedFile);
-    BITMAPINFOHEADER bitmapInfoHeader;
-    BITMAPFILEHEADER bitmapFileHeader;
-    fseek(fileBMP, 0, SEEK_SET);
-    fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, fileBMP);
-    fread(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, fileBMP);
     RGB* pixelBuffer = (RGB*) malloc(bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight * sizeof(RGB));
     fseek(fileBMP, bitmapFileHeader.bfOffBits, SEEK_SET);
     fread(pixelBuffer, sizeof(RGB), bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight, fileBMP);
@@ -110,14 +105,9 @@ void convertToNegative(FILE* fileBMP, FILE* editedFile)
     free(pixelBuffer);
 }
 
-void convertToBlackAndWhite(FILE* fileBMP, FILE* editedFile)
+void convertToBlackAndWhite(FILE* fileBMP, FILE* editedFile, BITMAPINFOHEADER bitmapInfoHeader, BITMAPFILEHEADER bitmapFileHeader)
 {
     checkFiles(fileBMP, editedFile);
-    BITMAPINFOHEADER bitmapInfoHeader;
-    BITMAPFILEHEADER bitmapFileHeader;
-    fseek(fileBMP, 0, SEEK_SET);
-    fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, fileBMP);
-    fread(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, fileBMP);
     RGB* pixelBuffer = (RGB*) malloc(bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight * sizeof(RGB));
     fseek(fileBMP, bitmapFileHeader.bfOffBits, SEEK_SET);
     fread(pixelBuffer, sizeof(RGB), bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight, fileBMP);
@@ -135,14 +125,9 @@ void convertToBlackAndWhite(FILE* fileBMP, FILE* editedFile)
     free(pixelBuffer);
 }
 
-void gammaCorrection(FILE* fileBMP, FILE* editedFile, float gammaValue)
+void gammaCorrection(FILE* fileBMP, FILE* editedFile, float gammaValue, BITMAPINFOHEADER bitmapInfoHeader, BITMAPFILEHEADER bitmapFileHeader)
 {
     checkFiles(fileBMP, editedFile);
-    BITMAPINFOHEADER bitmapInfoHeader;
-    BITMAPFILEHEADER bitmapFileHeader;
-    fseek(fileBMP, 0, SEEK_SET);
-    fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, fileBMP);
-    fread(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, fileBMP);
     RGB* pixelBuffer = (RGB*) malloc(bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight * sizeof(RGB));
     fseek(fileBMP, bitmapFileHeader.bfOffBits, SEEK_SET);
     fread(pixelBuffer, sizeof(RGB), bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight, fileBMP);
@@ -160,14 +145,9 @@ void gammaCorrection(FILE* fileBMP, FILE* editedFile, float gammaValue)
     free(pixelBuffer);
 }
 
-void medianFilter(FILE* fileBMP, FILE* editedFile, int filterSize)
+void medianFilter(FILE* fileBMP, FILE* editedFile, int filterSize, BITMAPINFOHEADER bitmapInfoHeader, BITMAPFILEHEADER bitmapFileHeader)
 {
     checkFiles(fileBMP, editedFile);
-    BITMAPINFOHEADER bitmapInfoHeader;
-    BITMAPFILEHEADER bitmapFileHeader;
-    fseek(fileBMP, 0, SEEK_SET);
-    fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, fileBMP);
-    fread(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, fileBMP);
     RGB* pixelBuffer = (RGB*) malloc(bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight * sizeof(RGB));
     fseek(fileBMP, bitmapFileHeader.bfOffBits, SEEK_SET);
     fread(pixelBuffer, sizeof(RGB), bitmapInfoHeader.biWidth * bitmapInfoHeader.biHeight, fileBMP);
@@ -219,7 +199,7 @@ size_t sortAndMedianSize(size_t *pixelValue, const size_t length) {
     return medianValue;
 }
 
-void menu(FILE* fileBMP, FILE* editedFile, const char* editedFileName)
+void menu(FILE* fileBMP, FILE* editedFile, const char* editedFileName, BITMAPINFOHEADER bitmapInfoHeader, BITMAPFILEHEADER bitmapFileHeader)
 {
     float gammaValue = 0;
     int medianFilterValue = 0;
@@ -250,20 +230,20 @@ void menu(FILE* fileBMP, FILE* editedFile, const char* editedFileName)
                 editedFile = copyFile(fileBMP, editedFile, editedFileName);
                 break;
             case 3:
-                convertToNegative(fileBMP, editedFile);
+                convertToNegative(fileBMP, editedFile, bitmapInfoHeader, bitmapFileHeader);
                 break;
             case 4:
-                convertToBlackAndWhite(fileBMP, editedFile);
+                convertToBlackAndWhite(fileBMP, editedFile, bitmapInfoHeader, bitmapFileHeader);
                 break;
             case 5:
                 printf("Enter gamma value level. Maximum value is 5.5!\n>");
                 checkValueForGammaValue(&gammaValue);
-                gammaCorrection(fileBMP, editedFile, gammaValue);
+                gammaCorrection(fileBMP, editedFile, gammaValue, bitmapInfoHeader, bitmapFileHeader);
                 break;
             case 6:
                 printf("Enter median filtering window size. Maximum value is 11. This value cannot be even!!!\n");
                 checkValueForMedianFiltering(&medianFilterValue);
-                medianFilter(fileBMP, editedFile, medianFilterValue);
+                medianFilter(fileBMP, editedFile, medianFilterValue, bitmapInfoHeader, bitmapFileHeader);
                 break;
             case 7:
                 fclose(editedFile);

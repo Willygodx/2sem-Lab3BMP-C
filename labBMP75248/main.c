@@ -17,7 +17,12 @@ int main()
     fileBMP = openFileWithChecks(fileBMPName, "rb");
     editedFile = openFileWithChecks(editedFileName, "wb");
     editedFile = copyFile(fileBMP, editedFile, editedFileName);
-    menu(fileBMP, editedFile, editedFileName);
+    BITMAPINFOHEADER bitmapInfoHeader;
+    BITMAPFILEHEADER bitmapFileHeader;
+    fseek(fileBMP, 0, SEEK_SET);
+    fread(&bitmapFileHeader, sizeof(BITMAPFILEHEADER), 1, fileBMP);
+    fread(&bitmapInfoHeader, sizeof(BITMAPINFOHEADER), 1, fileBMP);
+    menu(fileBMP, editedFile, editedFileName, bitmapInfoHeader, bitmapFileHeader);
     fclose(fileBMP);
     fclose(editedFile);
     free(fileBMPName);
