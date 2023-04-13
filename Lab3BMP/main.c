@@ -27,6 +27,7 @@ int main()
     fclose(editedFile);
     free(fileBMPName);
     free(editedFileName);
+
     return 0;
 }
 
